@@ -1,0 +1,156 @@
+<!--
+  PAGE HEADER
+
+  CLASSES:
+    .page-header-xs	= 20px margins
+    .page-header-md	= 50px margins
+    .page-header-lg	= 80px margins
+    .page-header-xlg= 130px margins
+    .dark			= dark page header
+
+    .shadow-before-1 	= shadow 1 header top
+    .shadow-after-1 	= shadow 1 header bottom
+    .shadow-before-2 	= shadow 2 header top
+    .shadow-after-2 	= shadow 2 header bottom
+    .shadow-before-3 	= shadow 3 header top
+    .shadow-after-3 	= shadow 3 header bottom
+-->
+<section class="page-header page-header-xs">
+  <div class="container">
+
+    <h1>{{pageTitle}}</h1>
+
+    <!-- breadcrumbs -->
+    <ol class="breadcrumb">
+      <li><a [routerLink]="topPage.link">{{topPage.title}}</a></li>
+      <li class="active" [routerLink]="membersPage.link">{{membersPage.title}}</li>
+    </ol>
+    <!-- /breadcrumbs -->
+
+  </div>
+</section>
+<!-- /PAGE HEADER -->
+
+<!-- -->
+<section>
+  <div class="container">
+
+    <!-- LIST OPTIONS -->
+    <div class="clearfix shop-list-options margin-bottom-20">
+
+      <ul class="pagination nomargin pull-right">
+        <li><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+
+      <div class="options-left">
+        <select>
+          <option value="pos_asc">Position ASC</option>
+          <option value="pos_desc">Position DESC</option>
+          <option value="name_asc">Name ASC</option>
+          <option value="name_desc">Name DESC</option>
+          <option value="price_asc">Price ASC</option>
+          <option value="price_desc">Price DESC</option>
+        </select>
+
+        <a class="btn active fa fa-th" href="shop-4col-left.html">
+          <!-- grid -->
+        </a>
+        <a class="btn fa fa-list" href="shop-1col-left.html">
+          <!-- list -->
+        </a>
+      </div>
+
+    </div>
+    <!-- /LIST OPTIONS -->
+
+    <ul class="shop-item-list row list-inline nomargin">
+
+      <!-- ITEM -->
+      <li *ngFor="let member of members" [class]="getItemClass()">
+
+        <div class="shop-item">
+
+          <div class="thumbnail">
+            <!-- product image(s) -->
+            <a class="shop-item-image" [routerLink]="getLinkForMemberID(member.memberId)">
+              <img *ngFor="let image of member.images; let i = index" class="img-responsive" [src]="image" [alt]="getAlt(member.memberId,i)" />
+            </a>
+            <!-- /product image(s) -->
+
+            <!-- hover buttons -->
+            <div class="shop-option-over">
+              <!-- replace data-item-id width the real item ID - used by js/view/demo.shop.js -->
+              <a class="btn btn-default add-wishlist" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Wishlist"><i class="fa fa-heart nopadding"></i></a>
+              <a class="btn btn-default add-compare" href="#" data-item-id="1" data-toggle="tooltip" title="Add To Compare"><i class="fa fa-bar-chart-o nopadding" data-toggle="tooltip"></i></a>
+            </div>
+            <!-- /hover buttons -->
+
+            <!-- product more info -->
+            <div *ngIf="member.isNew || member.isSale" class="shop-item-info">
+              <span *ngIf="member.isNew" class="label label-success">NEW</span>
+              <span *ngIf="member.isSale" class="label label-danger">SALE</span>
+            </div>
+            <!-- /product more info -->
+          </div>
+
+          <div class="shop-item-summary text-center">
+            <h2>{{member.introduction}}</h2>
+
+            <!-- rating -->
+            <div class="shop-item-rating-line">
+              <div [class]="getRatingClass(member.rating)">
+                <!-- rating-0 ... rating-5 -->
+              </div>
+            </div>
+            <!-- /rating -->
+
+            <!-- price -->
+            <div class="shop-item-price">
+              <!--<span class="line-through">$98.00</span>-->
+              {{member.memberId}}
+            </div>
+            <!-- /price -->
+          </div>
+
+          <!-- buttons -->
+          <div *ngIf="!member.isEngaged" class="shop-item-buttons text-center">
+            <a class="btn btn-default" href="shop-cart.html"><i class="fa fa-cart-plus"></i>{{seeDetails}}</a>
+          </div>
+          <!-- /buttons -->
+          <!-- Engaged -->
+          <div *ngIf="member.isEngaged" class="shop-item-buttons text-center">
+            <span class="out-of-stock">{{engagedNotification}}</span>
+            <!-- add .clean to remove css characteres -->
+          </div>
+
+        </div>
+
+      </li>
+      <!-- /ITEM -->
+
+    </ul>
+
+    <hr />
+
+    <!-- Pagination Default -->
+    <div class="text-center">
+      <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </div>
+    <!-- /Pagination Default -->
+
+  </div>
+</section>
+<!-- / -->
