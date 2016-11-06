@@ -345,7 +345,7 @@ export class WeddingMembersComponent {
     return "rating rating-" + rating + " size-13";
   }
   getLinkForMemberID(memberId) {
-    return "wedding/members/"+memberId;
+    return "/wedding/members/"+memberId;
   }
   addToWishList(memberId) {
 

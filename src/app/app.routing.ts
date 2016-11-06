@@ -10,6 +10,7 @@ import {WeddingHomeComponent} from "./wedding/wd-home.component";
 import {WeddingTopComponent} from "./wedding/wd-top.component";
 import {WeddingAboutComponent} from "./wedding/wd-about.component";
 import {WeddingMembersComponent} from "./wedding/wd-members.component";
+import {WeddingMemberDetailComponent} from "./wedding/wd-memberdetail.component";
 
 export const routes:Routes = [
   {
@@ -41,7 +42,8 @@ export const routes:Routes = [
     children: [
       {path: '', component: WeddingTopComponent},
       {path: 'about', component: WeddingAboutComponent, data: {pageTitle: 'About'}},
-      {path: 'members', component: WeddingMembersComponent, data: {pageTitle: 'Members'}}
+      {path: 'members', component: WeddingMembersComponent, data: {pageTitle: 'Members'}},
+      {path: 'members/:memberId', component: WeddingMemberDetailComponent, data: {pageTitle: 'MemberDetail'}}
     ]
   },
   { path: 'auth', component: AuthLayoutComponent, loadChildren: 'app/+auth/auth.module#AuthModule'},

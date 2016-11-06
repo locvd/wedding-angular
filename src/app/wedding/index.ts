@@ -4,6 +4,7 @@ import { WeddingTopComponent} from "./wd-top.component";
 import { WeddingAboutComponent} from "./wd-about.component";
 import { WeddingMembersComponent } from "./wd-members.component";
 import { WeddingFooterComponent } from "./wd-footer.component";
+import { WeddingMemberDetailComponent } from "./wd-memberdetail.component";
 
 export const WEDDINGS_DECLARATIONS = [
   WeddingNavbarComponent,
@@ -11,5 +12,6 @@ export const WEDDINGS_DECLARATIONS = [
   WeddingTopComponent,
   WeddingAboutComponent,
   WeddingMembersComponent,
-  WeddingFooterComponent
+  WeddingFooterComponent,
+  WeddingMemberDetailComponent
 ];
